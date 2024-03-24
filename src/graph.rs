@@ -7,7 +7,6 @@ use petgraph::graph::{EdgeIndex, NodeIndex};
 #[allow(unused_imports)]
 use petgraph::visit::EdgeRef;
 
-// use crate::{MeritRankError, NodeId, Weight, Node};
 use crate::errors::MeritRankError;
 use crate::node::{Node, NodeId, Weight};
 
