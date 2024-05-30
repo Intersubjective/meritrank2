@@ -268,15 +268,12 @@ impl MyGraph {
     }
 
     pub fn outgoing(&self, focus_id: NodeId) -> Vec<(EdgeIndex, NodeIndex, NodeId)> {
-        println!("outgoing: focus_id={:?}", focus_id);
         self.get_node_index(focus_id)
             .map(|focus_index| {
-                println!("outgoing: focus_index={:?}", focus_index);
                 self.graph
                     .edges_directed(focus_index, petgraph::Direction::Outgoing)
                     .into_iter()
                     .map(|e| {
-                        println!("outgoing: e={:?}", e);
                         (e.id(), e.target(), self.index2node(e.target()))
                     }
                     )
@@ -286,15 +283,12 @@ impl MyGraph {
     }
 
     pub fn connected(&self, focus_id: NodeId) -> Vec<(EdgeIndex, NodeId, NodeId)> {
-        println!("connected: focus_id={:?}", focus_id);
         self.get_node_index(focus_id)
             .map(|focus_index| {
-                println!("connected: focus_index={:?}", focus_index);
                 self.graph
                     .edges(focus_index)
                     .into_iter()
                     .map(|e| {
-                        println!("connected: e={:?}", e);
                         if e.source()==focus_index {
                             (e.id(), focus_id, self.index2node(e.target()))
                         } else if e.target()==focus_index {
